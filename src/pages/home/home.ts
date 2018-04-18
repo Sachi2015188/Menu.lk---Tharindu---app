@@ -69,32 +69,32 @@ export class HomePage extends Base {
 
     return entityCollection.sort(sortingFn(isReversed));
   }
-  onIonSegmentSelect(e: string) {
+//   onIonSegmentSelect(e: string) {
 
-    if (this._content.isScrolling || this.ionSegmentActivated) {
-      return;
-    }
-    const lambda = (scope: string) => {
-      const delay = 300;
-      const Entity = this.PageDataStore.get(scope);
-      this._content.scrollTo(0, Entity.scrollPos).then(() => asap.schedule( () => this.ionSegmentActivated = !this.ionSegmentActivated, delay));
+//     if (this._content.isScrolling || this.ionSegmentActivated) {
+//       return;
+//     }
+//     const lambda = (scope: string) => {
+//       const delay = 300;
+//       const Entity = this.PageDataStore.get(scope);
+//       this._content.scrollTo(0, Entity.scrollPos).then(() => asap.schedule( () => this.ionSegmentActivated = !this.ionSegmentActivated, delay));
 
-      this.imagesLoader.updateImgs();
-    };
+//       this.imagesLoader.updateImgs();
+//     };
 
-    this.ionSegmentActivated = true;
-    // remember previous position;
-    const previousScope = this.pageConfig.fireConfig.scope;
-    this.PageDataStore.get(previousScope).scrollPos = this._content.scrollTop;
+//     this.ionSegmentActivated = true;
+//     // remember previous position;
+//     const previousScope = this.pageConfig.fireConfig.scope;
+//     this.PageDataStore.get(previousScope).scrollPos = this._content.scrollTop;
 
-    this.pageConfig.fireConfig.scope = e;
+//     this.pageConfig.fireConfig.scope = e;
 
-    // scrolling to position
-    if (!this.PageDataStore.get(e)) {
-      return this.getResource(this.pageConfig).then(() => lambda(e));
-    }
-    return lambda(e);
-  }
+//     // scrolling to position
+//     if (!this.PageDataStore.get(e)) {
+//       return this.getResource(this.pageConfig).then(() => lambda(e));
+//     }
+//     return lambda(e);
+//   }
   private _pageJob(resultSet: IRestaurants[]) {
     try {
       console.log("DEBUG FROM _pageJob resultSet => ",resultSet );
